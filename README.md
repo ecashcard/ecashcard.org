@@ -6,4 +6,5 @@ The parent site for [Cashu Card](https://cashucard.org) and [Fedimint Card](http
 - `dist/assets/site.css` holds every style. Figtree is bundled under `dist/assets/fonts/` (OFL).
 - The two project marks under `dist/assets/` are copies from each project's site.
 
-Preview without publishing: `npx wrangler versions upload`. Publish: `npx wrangler deploy`.
+Preview without publishing: `npx wrangler versions upload` (its preview URL serves only that version). Publish: `npx wrangler deploy`, which serves ecashcard.org and www.
+The workers.dev address belongs to the same Worker, so it always shows what ecashcard.org shows.

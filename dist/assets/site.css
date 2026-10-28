@@ -23,10 +23,20 @@ a:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; border-
 .wrap { max-width: 880px; margin: 0 auto; }
 
 header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 28px; }
-.lock { display: flex; align-items: center; gap: 12px; text-decoration: none; font-size: 24px; letter-spacing: -.01em; }
-.lock img { height: 24px; width: auto; }
+.lock { display: flex; align-items: center; gap: 12px; text-decoration: none; font-size: 25px; letter-spacing: -.02em; }
 .lock b { font-weight: 800; color: var(--ink); }
 .lock span { font-weight: 400; color: var(--muted); }
+/* the mark arrives once: the card pops in, the notes fan up from behind it, the word slides in */
+.lock .mark { height: 40px; width: auto; overflow: visible; flex: none; }
+.lock .mark .c { transform-box: fill-box; transform-origin: center; animation: markPop .5s cubic-bezier(.3, .7, .4, 1) both; }
+.lock .mark .n { animation: markNote .6s cubic-bezier(.2, .8, .3, 1) both; }
+.lock .mark .n1 { animation-delay: .35s; }
+.lock .mark .n2 { animation-delay: .47s; }
+.lock .mark .n3 { animation-delay: .59s; }
+.lock span { animation: markWord .55s cubic-bezier(.2, .8, .3, 1) .8s both; }
+@keyframes markPop { 0% { transform: scale(.6); opacity: 0; } 60% { transform: scale(1.06); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes markNote { 0% { transform: translateY(20px); opacity: 0; } 15% { opacity: 1; } 70% { transform: translateY(-2px); } 100% { transform: translateY(0); opacity: 1; } }
+@keyframes markWord { from { transform: translateX(-14px); opacity: 0; } to { transform: none; opacity: 1; } }
 header.top nav { display: flex; gap: 22px; font-size: 16px; }
 header.top nav a { color: var(--body); text-decoration: none; }
 header.top nav a:hover { color: var(--copper-dark); text-decoration: underline; }
