@@ -1,0 +1,14 @@
+// Preview config: the same Worker with no custom domains, so a deploy with it reaches workers.dev only.
+// npx wrangler deploy --config wrangler.preview.jsonc
+{
+  "name": "ecashcard-site",
+  "compatibility_date": "2026-10-28",
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}
