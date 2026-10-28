@@ -18,7 +18,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/Figtree-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=3">
 </head>
 <body>
 <div class="wrap">
@@ -33,70 +33,47 @@
   <p class="kicker">Our purpose</p>
   <h1 id="vision-title">Digital money that works like cash.</h1>
   <p class="lede">eCash Card builds cards that hold ecash: bearer money that pays by tap, is private by design, and belongs to whoever holds the card. We build in the open so that a card is enough, for a child, a grandparent, a market stall, and for the day the network is down.</p>
-  <figure class="scene" aria-hidden="true">
-    <svg viewBox="0 0 640 300" width="640" height="300">
-      <defs>
-        <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1d38a"/><stop offset="1" stop-color="#b8651f"/></linearGradient>
-      </defs>
-      <!-- the till -->
-      <g class="till">
-        <rect x="430" y="60" width="150" height="190" rx="14" fill="#1f2226"/>
-        <rect x="452" y="84" width="106" height="52" rx="6" fill="#30343a"/>
-        <text x="505" y="117" class="amount" text-anchor="middle">4.20</text>
-        <circle cx="505" cy="200" r="24" fill="none" stroke="#6b6f78" stroke-width="2" stroke-dasharray="3 5"/>
-        <circle class="ok" cx="505" cy="200" r="24" fill="#c8e58c"/>
-        <path class="tick" d="M494 200 l8 8 l14 -16" fill="none" stroke="#12160f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </g>
-      <!-- the waves -->
-      <g class="waves" fill="none" stroke="#b8651f" stroke-width="2.5" stroke-linecap="round">
-        <path d="M372 160 a30 30 0 0 1 0 -40"/>
-        <path d="M388 172 a46 46 0 0 1 0 -64"/>
-        <path d="M404 184 a62 62 0 0 1 0 -88"/>
-      </g>
-      <!-- the card -->
-      <g class="card">
-        <rect x="80" y="90" width="240" height="152" rx="14" fill="#f6f3ec" stroke="#17191c" stroke-width="2.5"/>
-        <rect x="104" y="130" width="40" height="30" rx="5" fill="url(#chip)"/>
-        <path d="M104 140h40M104 150h40M124 130v30" stroke="#f6f3ec" stroke-width="1.5" opacity=".7"/>
-        <path d="M110 212h120" stroke="#17191c" stroke-width="2" stroke-linecap="round" opacity=".55"/>
-        <path d="M110 226h70" stroke="#17191c" stroke-width="2" stroke-linecap="round" opacity=".3"/>
-      </g>
-    </svg>
+  <figure class="film" role="img" aria-label="A dark card lies on a sunlit counter beside a payment terminal. It is laid on the terminal, which reads it and shows Paid while offline, and the card goes back to where it lay.">
+    <video autoplay muted loop playsinline preload="auto" width="1760" height="990" poster="/media/hero-1-poster.webp">
+      <source src="/media/hero-1-540.mp4" type="video/mp4" media="(max-width: 700px)">
+      <source src="/media/hero-1.mp4" type="video/mp4">
+    </video>
+    <img class="still" src="/media/hero-1-still.webp" alt="" width="1760" height="990" loading="lazy">
   </figure>
 </section>
 
-<section class="why" aria-labelledby="why-title">
+<section class="why reveal" aria-labelledby="why-title">
   <p class="kicker">Why we build this</p>
   <h2 id="why-title">Three things we want to be true</h2>
-  <ol class="reasons">
+  <ol class="reasons stagger">
     <li>
-      <svg class="pict" viewBox="0 0 120 80" aria-hidden="true">
-        <g class="note"><rect x="10" y="18" width="100" height="46" rx="4" fill="none" stroke="#17191c" stroke-width="2"/><circle cx="60" cy="41" r="12" fill="none" stroke="#17191c" stroke-width="2"/><circle cx="26" cy="41" r="3" fill="#17191c"/><circle cx="94" cy="41" r="3" fill="#17191c"/></g>
-        <g class="cardp"><rect x="10" y="18" width="100" height="46" rx="6" fill="none" stroke="#b8651f" stroke-width="2"/><rect x="22" y="31" width="18" height="13" rx="2" fill="#b8651f"/><path d="M52 55h40" stroke="#b8651f" stroke-width="2" stroke-linecap="round"/></g>
-      </svg>
+      <figure class="tile" role="img" aria-label="A banknote lies on a sunlit counter; it slides away and an ecash card slides into its place.">
+        <video autoplay muted loop playsinline preload="auto" width="720" height="480" poster="/media/note-1-poster.webp"><source src="/media/note-1.mp4" type="video/mp4"></video>
+        <img class="still" src="/media/note-1-still.webp" alt="" width="720" height="480" loading="lazy">
+      </figure>
       <h3>Cash keeps its properties when it goes digital</h3>
       <p>Every year more shops, buses and schools take only cards and apps, and each of those payments leaves a record with a company. Ecash is a bearer token: it is spent without asking anyone, and the payer stays unnamed. A card gives it a body.</p>
     </li>
     <li>
-      <svg class="pict" viewBox="0 0 120 80" aria-hidden="true">
-        <rect x="10" y="22" width="64" height="40" rx="5" fill="none" stroke="#17191c" stroke-width="2"/><rect x="20" y="34" width="14" height="10" rx="2" fill="#b8651f"/>
-        <g class="tapwaves" fill="none" stroke="#b8651f" stroke-width="2" stroke-linecap="round"><path d="M86 50a10 10 0 0 0 0-16"/><path d="M94 56a18 18 0 0 0 0-28"/><path d="M102 62a26 26 0 0 0 0-40"/></g>
-      </svg>
+      <figure class="tile" role="img" aria-label="An ecash card stands alone in window light, turning a little each way.">
+        <video autoplay muted loop playsinline preload="auto" width="720" height="480" poster="/media/card-1-poster.webp"><source src="/media/card-1.mp4" type="video/mp4"></video>
+        <img class="still" src="/media/card-1-still.webp" alt="" width="720" height="480" loading="lazy">
+      </figure>
       <h3>A card is enough</h3>
       <p>Many of the people who would use ecash are children, elders, or people who would rather keep their phone out of it. A card costs a few dollars, works for years without a battery, and the holder carries only the card.</p>
     </li>
     <li>
-      <svg class="pict" viewBox="0 0 120 80" aria-hidden="true">
-        <g class="signal" fill="#17191c"><rect x="14" y="48" width="8" height="14" rx="2"/><rect x="26" y="40" width="8" height="22" rx="2"/><rect x="38" y="30" width="8" height="32" rx="2"/><rect x="50" y="18" width="8" height="44" rx="2"/></g>
-        <circle cx="90" cy="42" r="18" fill="#c8e58c"/><path class="tick2" d="M81 42l6 6 12 -13" fill="none" stroke="#12160f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <figure class="tile tile-night" role="img" aria-label="At night, a card is laid on a payment terminal that shows it is offline, and the terminal shows Paid.">
+        <video autoplay muted loop playsinline preload="auto" width="720" height="480" poster="/media/offline-1-poster.webp"><source src="/media/offline-1.mp4" type="video/mp4"></video>
+        <img class="still" src="/media/offline-1-still.webp" alt="" width="720" height="480" loading="lazy">
+      </figure>
       <h3>Payments that work offline</h3>
       <p>A card and a till can settle between themselves and tell the mint later. The storm, the blackout and the dead zone stop being reasons to turn someone away.</p>
     </li>
   </ol>
 </section>
 
-<section class="how" aria-labelledby="how-title">
+<section class="how reveal" aria-labelledby="how-title">
   <p class="kicker">How we work</p>
   <h2 id="how-title">Commitments every project keeps</h2>
   <dl class="commit">
@@ -107,7 +84,7 @@
   </dl>
 </section>
 
-<section class="projects" aria-labelledby="projects-title">
+<section class="projects reveal" aria-labelledby="projects-title">
   <p class="kicker">The projects</p>
   <h2 id="projects-title">Two cards, two ecash protocols</h2>
   <ul>

@@ -1,4 +1,5 @@
-/* ecashcard.org: a purpose page. Paper, ink and one copper accent; motion only in the illustrations, all CSS. */
+/* ecashcard.org: a purpose page. Paper, ink and one copper accent. The motion is rendered film (the hero and one tile
+   per reason, from the ecashcard-film repository); the page itself only lets its sections rise in as they arrive. */
 @font-face { font-family: "Figtree"; src: url("/assets/fonts/Figtree-Variable.woff2") format("woff2"); font-weight: 300 900; font-display: swap; }
 :root {
   --paper: #f6f3ec;
@@ -10,11 +11,12 @@
   --copper-dark: #8f4c13;
   --sans: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --out: cubic-bezier(.2, .7, .2, 1);
   color-scheme: light;
 }
 * { box-sizing: border-box; }
 html { background: var(--paper); scroll-behavior: smooth; }
-body { margin: 0; color: var(--ink); font: 400 19px/1.6 var(--sans); background: var(--paper); padding-inline: clamp(16px, 5vw, 56px); }
+body { margin: 0; color: var(--ink); font: 400 19px/1.6 var(--sans); background: var(--paper); padding-inline: clamp(16px, 5vw, 56px); overflow-x: clip; }
 a { color: var(--ink); text-decoration-color: var(--copper); text-underline-offset: 3px; }
 a:hover { color: var(--copper-dark); }
 a:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; border-radius: 3px; }
@@ -31,52 +33,57 @@ header.top nav a:hover { color: var(--copper-dark); text-decoration: underline; 
 
 .kicker { font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--copper-dark); margin: 0 0 18px; }
 section { padding-block: clamp(48px, 9vw, 112px); border-top: 1px solid var(--line); }
-section.vision { border-top: 0; padding-top: clamp(32px, 7vw, 80px); }
+section.vision { border-top: 0; padding-top: clamp(32px, 7vw, 80px); padding-bottom: clamp(24px, 5vw, 56px); }
 h1 { font-size: clamp(42px, 8vw, 84px); line-height: 1.0; font-weight: 800; letter-spacing: -.025em; margin: 0; text-wrap: balance; max-width: 11em; }
 .lede { font-size: clamp(19px, 2.4vw, 24px); line-height: 1.5; color: var(--body); max-width: 30em; margin: 28px 0 0; text-wrap: pretty; }
 h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; margin: 0 0 28px; text-wrap: balance; max-width: 18em; }
 h3 { font-size: 21px; font-weight: 700; margin: 18px 0 8px; letter-spacing: -.01em; }
 p { margin: 0; }
 
-/* the scene: a card taps a till; the till agrees. Loops every 7 s. */
-figure.scene { margin: clamp(32px, 6vw, 64px) 0 0; }
-figure.scene svg { display: block; width: 100%; max-width: 640px; height: auto; }
-.amount { font: 700 26px var(--mono); fill: #f6f3ec; }
-.card { transform-origin: 200px 166px; animation: tap 7s ease-in-out infinite; }
-.waves path { opacity: 0; animation: wave 7s ease-out infinite; }
-.waves path:nth-child(2) { animation-delay: .18s; }
-.waves path:nth-child(3) { animation-delay: .36s; }
-.ok { transform-origin: 505px 200px; transform: scale(0); animation: ok 7s ease-out infinite; }
-.tick { stroke-dasharray: 34; stroke-dashoffset: 34; animation: tick 7s ease-out infinite; }
-@keyframes tap {
-  0%, 18% { transform: translate(-40px, 24px) rotate(-8deg); }
-  36%, 62% { transform: translate(48px, 0) rotate(0deg); }
-  80%, 100% { transform: translate(-40px, 24px) rotate(-8deg); }
-}
-@keyframes wave { 0%, 36% { opacity: 0; } 42% { opacity: 1; } 56% { opacity: 1; } 66%, 100% { opacity: 0; } }
-@keyframes ok { 0%, 48% { transform: scale(0); } 56% { transform: scale(1.08); } 60%, 84% { transform: scale(1); } 92%, 100% { transform: scale(0); } }
-@keyframes tick { 0%, 54% { stroke-dashoffset: 34; } 66%, 84% { stroke-dashoffset: 0; } 92%, 100% { stroke-dashoffset: 34; } }
+/* the purpose lines rise in once; the film follows */
+.vision .kicker, .vision h1, .vision .lede, figure.film { animation: arrive 1s var(--out) both; }
+.vision h1 { animation-delay: .08s; }
+.vision .lede { animation-delay: .2s; }
+figure.film { animation-delay: .38s; }
+@keyframes arrive { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
-/* the reasons: a note becomes a card; a card is tapped; the signal drops and the tap still goes through */
-ol.reasons { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 4vw, 44px); }
+/* ── The hero film: a little wider than the text column, its edges fading into the paper ───────────── */
+figure.film {
+  --w: min(1100px, 100vw);
+  width: var(--w); margin: clamp(24px, 5vw, 56px) 0 0 calc(50% - var(--w)/2);
+  position: relative; aspect-ratio: 16 / 9;
+}
+figure.film video, figure.film img {
+  display: block; width: 100%; height: 100%; object-fit: cover; background: var(--paper);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 13%, #000 87%, transparent), linear-gradient(to bottom, transparent, #000 12%, #000 84%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 13%, #000 87%, transparent), linear-gradient(to bottom, transparent, #000 12%, #000 84%, transparent);
+  mask-composite: intersect;
+}
+
+/* ── The reasons, each with its tile ───────────────────────────────────────────────────────────────── */
+ol.reasons { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 4vw, 40px); }
 ol.reasons li { min-width: 0; }
 ol.reasons p { color: var(--body); font-size: 17px; }
-.pict { display: block; width: 120px; height: 80px; }
-.note { animation: swapA 8s ease-in-out infinite; }
-.cardp { animation: swapB 8s ease-in-out infinite; }
-@keyframes swapA { 0%, 40% { opacity: 1; } 50%, 90% { opacity: 0; } 100% { opacity: 1; } }
-@keyframes swapB { 0%, 40% { opacity: 0; } 50%, 90% { opacity: 1; } 100% { opacity: 0; } }
-.tapwaves path { opacity: .25; animation: pulse 2.4s ease-out infinite; }
-.tapwaves path:nth-child(2) { animation-delay: .25s; }
-.tapwaves path:nth-child(3) { animation-delay: .5s; }
-@keyframes pulse { 0% { opacity: .25; } 30% { opacity: 1; } 100% { opacity: .25; } }
-.signal rect { animation: drop 8s ease-in-out infinite; }
-.signal rect:nth-child(2) { animation-delay: .15s; }
-.signal rect:nth-child(3) { animation-delay: .3s; }
-.signal rect:nth-child(4) { animation-delay: .45s; }
-@keyframes drop { 0%, 30% { opacity: 1; } 45%, 85% { opacity: .18; } 100% { opacity: 1; } }
-.tick2 { stroke-dasharray: 30; stroke-dashoffset: 30; animation: tick2 8s ease-out infinite; }
-@keyframes tick2 { 0%, 50% { stroke-dashoffset: 30; } 62%, 90% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 30; } }
+figure.tile { margin: 0 0 6px; aspect-ratio: 3 / 2; border-radius: 14px; overflow: hidden; background: #ece8df;
+  box-shadow: 0 0 0 1px rgba(23, 25, 28, .07), 0 14px 32px -12px rgba(23, 25, 28, .22); }
+figure.tile.tile-night { background: #0e1118; }
+figure.tile video, figure.tile img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* motion off: the films give way to their stills */
+figure.film .still, figure.tile .still { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  figure.film video, figure.tile video { display: none; }
+  figure.film .still, figure.tile .still { display: block; }
+}
+
+/* ── Sections rise in as they scroll into view, where the browser can tie an animation to scrolling ── */
+@supports (animation-timeline: view()) {
+  .reveal > :not(.stagger), .stagger > li { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+  .stagger > li:nth-child(2) { animation-range: entry 10% entry 50%; }
+  .stagger > li:nth-child(3) { animation-range: entry 20% entry 60%; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 
 dl.commit { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 22px 36px; }
 dl.commit dt { font-weight: 700; }
@@ -87,8 +94,9 @@ section.projects a { display: grid; grid-template-columns: 48px minmax(0, 1fr) a
 section.projects li:last-child a { border-bottom: 1px solid var(--line); }
 section.projects a span { font-size: 17px; color: var(--body); }
 section.projects a b { font-size: 21px; color: var(--ink); }
-section.projects a .go { font: 600 14px/1 var(--mono); letter-spacing: .04em; color: var(--copper-dark); white-space: nowrap; }
+section.projects a .go { font: 600 14px/1 var(--mono); letter-spacing: .04em; color: var(--copper-dark); white-space: nowrap; transition: transform .25s var(--out); }
 section.projects a:hover b { color: var(--copper-dark); }
+section.projects a:hover .go { transform: translateX(4px); }
 .m-cashu { background: #c8e58c; border-radius: 10px; padding: 5px; }
 
 .doc { max-width: 42em; padding-block: clamp(24px, 5vw, 56px); }
@@ -112,13 +120,6 @@ footer a { color: var(--body); }
   header.top nav { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .card, .waves path, .ok, .tick, .note, .cardp, .tapwaves path, .signal rect, .tick2 { animation: none; }
-  .card { transform: translate(48px, 0); }
-  .waves path { opacity: 1; }
-  .ok { transform: scale(1); }
-  .tick, .tick2 { stroke-dashoffset: 0; }
-  .note { opacity: 0; }
-  .cardp { opacity: 1; }
-  .tapwaves path { opacity: 1; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }

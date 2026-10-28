@@ -1,7 +1,9 @@
-// ecashcard.org: static pages from dist/, served as Workers static assets. No Worker code.
+// ecashcard.org: static pages from dist/, served as Workers static assets, plus worker.js for byte ranges on /media/*
+// (Safari and iOS play video only from 206 responses). The same setup as cashucard.org and fedimintcard.org.
 // Preview a version without publishing it: npx wrangler versions upload. Publish: npx wrangler deploy.
 {
   "name": "ecashcard-site",
+  "main": "worker.js",
   "compatibility_date": "2026-10-28",
   "workers_dev": true,
   "preview_urls": true,
@@ -11,8 +13,12 @@
   ],
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/media/*"]
   },
+  // Workers Caching: Cloudflare keeps each full video and serves byte-range slices of it from cache
+  "cache": { "enabled": true },
   "observability": { "enabled": true }
 }
