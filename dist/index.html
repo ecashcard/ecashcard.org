@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>eCash Card</title>
+<meta name="description" content="eCash Card builds open source cards that hold ecash: digital money that works like cash, for people with or without a phone, online or off.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f6f3ec">
+<link rel="canonical" href="https://ecashcard.org/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ecashcard.org/">
+<meta property="og:title" content="eCash Card">
+<meta property="og:description" content="Open source cards that hold ecash: digital money that works like cash, for people with or without a phone, online or off.">
+<meta property="og:image" content="https://ecashcard.org/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/Figtree-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <a class="lock" href="/" aria-label="eCash Card home"><img src="/favicon.svg" alt="" width="40" height="26"><span><b>ecash</b>card</span></a>
+  <nav aria-label="Projects"><a href="https://cashucard.org">Cashu Card</a><a href="https://fedimintcard.org">Fedimint Card</a></nav>
+</header>
+
+<main>
+<section class="vision" aria-labelledby="vision-title">
+  <p class="kicker">Our purpose</p>
+  <h1 id="vision-title">Digital money that works like cash.</h1>
+  <p class="lede">eCash Card builds cards that hold ecash: bearer money that pays by tap, is private by design, and belongs to whoever holds the card. We build in the open so that a card is enough, for a child, a grandparent, a market stall, and for the day the network is down.</p>
+  <figure class="scene" aria-hidden="true">
+    <svg viewBox="0 0 640 300" width="640" height="300">
+      <defs>
+        <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1d38a"/><stop offset="1" stop-color="#b8651f"/></linearGradient>
+      </defs>
+      <!-- the till -->
+      <g class="till">
+        <rect x="430" y="60" width="150" height="190" rx="14" fill="#1f2226"/>
+        <rect x="452" y="84" width="106" height="52" rx="6" fill="#30343a"/>
+        <text x="505" y="117" class="amount" text-anchor="middle">4.20</text>
+        <circle cx="505" cy="200" r="24" fill="none" stroke="#6b6f78" stroke-width="2" stroke-dasharray="3 5"/>
+        <circle class="ok" cx="505" cy="200" r="24" fill="#c8e58c"/>
+        <path class="tick" d="M494 200 l8 8 l14 -16" fill="none" stroke="#12160f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <!-- the waves -->
+      <g class="waves" fill="none" stroke="#b8651f" stroke-width="2.5" stroke-linecap="round">
+        <path d="M372 160 a30 30 0 0 1 0 -40"/>
+        <path d="M388 172 a46 46 0 0 1 0 -64"/>
+        <path d="M404 184 a62 62 0 0 1 0 -88"/>
+      </g>
+      <!-- the card -->
+      <g class="card">
+        <rect x="80" y="90" width="240" height="152" rx="14" fill="#f6f3ec" stroke="#17191c" stroke-width="2.5"/>
+        <rect x="104" y="130" width="40" height="30" rx="5" fill="url(#chip)"/>
+        <path d="M104 140h40M104 150h40M124 130v30" stroke="#f6f3ec" stroke-width="1.5" opacity=".7"/>
+        <path d="M110 212h120" stroke="#17191c" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+        <path d="M110 226h70" stroke="#17191c" stroke-width="2" stroke-linecap="round" opacity=".3"/>
+      </g>
+    </svg>
+  </figure>
+</section>
+
+<section class="why" aria-labelledby="why-title">
+  <p class="kicker">Why we build this</p>
+  <h2 id="why-title">Three things we want to be true</h2>
+  <ol class="reasons">
+    <li>
+      <svg class="pict" viewBox="0 0 120 80" aria-hidden="true">
+        <g class="note"><rect x="10" y="18" width="100" height="46" rx="4" fill="none" stroke="#17191c" stroke-width="2"/><circle cx="60" cy="41" r="12" fill="none" stroke="#17191c" stroke-width="2"/><circle cx="26" cy="41" r="3" fill="#17191c"/><circle cx="94" cy="41" r="3" fill="#17191c"/></g>
+        <g class="cardp"><rect x="10" y="18" width="100" height="46" rx="6" fill="none" stroke="#b8651f" stroke-width="2"/><rect x="22" y="31" width="18" height="13" rx="2" fill="#b8651f"/><path d="M52 55h40" stroke="#b8651f" stroke-width="2" stroke-linecap="round"/></g>
+      </svg>
+      <h3>Cash keeps its properties when it goes digital</h3>
+      <p>Every year more shops, buses and schools take only cards and apps, and each of those payments leaves a record with a company. Ecash is a bearer token: it is spent without asking anyone, and the payer stays unnamed. A card gives it a body.</p>
+    </li>
+    <li>
+      <svg class="pict" viewBox="0 0 120 80" aria-hidden="true">
+        <rect x="10" y="22" width="64" height="40" rx="5" fill="none" stroke="#17191c" stroke-width="2"/><rect x="20" y="34" width="14" height="10" rx="2" fill="#b8651f"/>
+        <g class="tapwaves" fill="none" stroke="#b8651f" stroke-width="2" stroke-linecap="round"><path d="M86 50a10 10 0 0 0 0-16"/><path d="M94 56a18 18 0 0 0 0-28"/><path d="M102 62a26 26 0 0 0 0-40"/></g>
+      </svg>
+      <h3>A card is enough</h3>
+      <p>Many of the people who would use ecash are children, elders, or people who would rather keep their phone out of it. A card costs a few dollars, works for years without a battery, and the holder carries only the card.</p>
+    </li>
+    <li>
+      <svg class="pict" viewBox="0 0 120 80" aria-hidden="true">
+        <g class="signal" fill="#17191c"><rect x="14" y="48" width="8" height="14" rx="2"/><rect x="26" y="40" width="8" height="22" rx="2"/><rect x="38" y="30" width="8" height="32" rx="2"/><rect x="50" y="18" width="8" height="44" rx="2"/></g>
+        <circle cx="90" cy="42" r="18" fill="#c8e58c"/><path class="tick2" d="M81 42l6 6 12 -13" fill="none" stroke="#12160f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>Payments that work offline</h3>
+      <p>A card and a till can settle between themselves and tell the mint later. The storm, the blackout and the dead zone stop being reasons to turn someone away.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="how" aria-labelledby="how-title">
+  <p class="kicker">How we work</p>
+  <h2 id="how-title">Commitments every project keeps</h2>
+  <dl class="commit">
+    <dt>Open source</dt><dd>Every applet, tool and app is released under the MIT License, with its source on GitHub.</dd>
+    <dt>Keys on the chip</dt><dd>A card signs with a key made on its own secure element, where it stays. Mints and federations belong to their operators, and the money belongs to whoever holds the card.</dd>
+    <dt>Honest about maturity</dt><dd>Both projects are experimental prototypes with little outside review. We say so everywhere, and we ask holders to keep small amounts on a card.</dd>
+    <dt>Stewardship</dt><dd>eCash Card LLC, a California company, holds the projects’ domains, accounts and trademarks, so that neither project depends on any one wallet or company.</dd>
+  </dl>
+</section>
+
+<section class="projects" aria-labelledby="projects-title">
+  <p class="kicker">The projects</p>
+  <h2 id="projects-title">Two cards, two ecash protocols</h2>
+  <ul>
+    <li><a href="https://cashucard.org"><img src="/assets/cashucard-mark.svg" alt="" width="40" height="40" class="m-cashu"><span><b>Cashu Card</b><br>An open protocol for Cashu ecash on NFC smart cards, maintained by Flash and Foxy.</span><span class="go">cashucard.org</span></a></li>
+    <li><a href="https://fedimintcard.org"><img src="/assets/fedimintcard-mark.svg" alt="" width="40" height="30" class="m-fedi"><span><b>Fedimint Card</b><br>An experimental JavaCard that holds the spend keys for Fedimint ecash notes.</span><span class="go">fedimintcard.org</span></a></li>
+  </ul>
+</section>
+</main>
+
+<footer>
+  <p>eCash Card LLC · <a href="mailto:hi@ecashcard.org">hi@ecashcard.org</a></p>
+  <nav aria-label="Site"><a href="/privacy">Privacy</a><a href="https://github.com/cashucard">GitHub: cashucard</a><a href="https://github.com/fedimintcard">GitHub: fedimintcard</a></nav>
+</footer>
+
+</div>
+</body>
+</html>

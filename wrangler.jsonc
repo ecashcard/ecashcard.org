@@ -1,0 +1,18 @@
+// ecashcard.org: static pages from dist/, served as Workers static assets. No Worker code.
+// Preview a version without publishing it: npx wrangler versions upload. Publish: npx wrangler deploy.
+{
+  "name": "ecashcard-site",
+  "compatibility_date": "2026-10-28",
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    { "pattern": "ecashcard.org", "custom_domain": true },
+    { "pattern": "www.ecashcard.org", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}
