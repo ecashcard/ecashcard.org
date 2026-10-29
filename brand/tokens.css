@@ -1,0 +1,15 @@
+/* eCash Card colors (brand/generate.py writes this file) */
+:root {
+  --paper: #F6F3EC;  /* The ground: the site, the icon and the deck. */
+  --ink: #17191C;  /* Headings and text on paper, and "ecash" in the wordmark. Dark bands. */
+  --body: #3D4047;  /* Body text on paper. */
+  --muted: #6B6F78;  /* Secondary text, and "card" in the wordmark on paper. */
+  --copper: #B8651F;  /* The accent: link underlines and small labels. */
+  --copper-dark: #8F4C13;  /* Labels on paper (the mono kicker over each section). */
+  --lime: #B8E06A;  /* The mark's card and notes, the Paid tick, and labels on ink. */
+  --forest: #13231E;  /* The mark's outlines and the one-color mark. */
+  --paper-on-ink: #F6F3EC;  /* Text on ink, and "ecash" in the dark wordmark. */
+  --muted-on-ink: #A9A59B;  /* "card" in the dark wordmark. */
+  --font: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
