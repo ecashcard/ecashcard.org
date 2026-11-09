@@ -121,6 +121,31 @@ footer { border-top: 1px solid var(--line); padding-block: 32px 48px; color: var
 footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
 footer a { color: var(--body); }
 
+
+/* ── The need: four sourced figures ────────────────────────────────────────────────────────────────── */
+dl.figures { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+dl.figures > div { padding: 22px 24px 4px 0; border-right: 1px solid var(--line); margin-right: 24px; }
+dl.figures > div:last-child { border-right: 0; margin-right: 0; }
+dl.figures dt { font-size: clamp(28px, 3vw, 38px); white-space: nowrap; font-weight: 800; letter-spacing: -.03em; line-height: 1; color: var(--copper-dark); }
+dl.figures dd { margin: 12px 0 0; color: var(--body); font-size: 16px; line-height: 1.45; }
+dl.figures cite { display: block; margin-top: 10px; font: 500 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; font-style: normal; color: var(--muted); }
+
+/* ── Get involved: the fund call to action ──────────────────────────────────────────────────────────── */
+.fund { margin-top: clamp(32px, 5vw, 48px); padding: 26px 28px; border-radius: 14px; background: var(--ink); color: var(--paper); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; }
+.fund p { color: #c9ccd2; max-width: 32em; }
+.fund .fund-title { font-size: 24px; font-weight: 800; letter-spacing: -.02em; color: var(--paper); margin-bottom: 6px; }
+.fund-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.fund-links a { font: 600 16px/1 var(--mono); padding: 14px 18px; border-radius: 10px; background: #b8e06a; color: #13231e; text-decoration: none; white-space: nowrap; transition: transform .25s var(--out); }
+.fund-links a:first-child { background: #22408a; color: #f3eac6; }
+.fund-links a:hover { transform: translateY(-2px); }
+.fund-links a:focus-visible { outline: 2px solid var(--paper); outline-offset: 3px; }
+@media (max-width: 760px) {
+  dl.figures { grid-template-columns: 1fr 1fr; }
+  dl.figures > div:nth-child(2) { border-right: 0; margin-right: 0; }
+  dl.figures > div:nth-child(3), dl.figures > div:nth-child(4) { border-top: 1px solid var(--line); }
+  .fund-links a { flex: 1; text-align: center; }
+}
+
 @media (max-width: 760px) {
   ol.reasons { grid-template-columns: 1fr; }
   dl.commit { grid-template-columns: 1fr; gap: 6px; }
