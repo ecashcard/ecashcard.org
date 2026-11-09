@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two chips, one applet: the J3R180 and the J3R452 | eCash Card</title>
+<meta name="description" content="We put eCash Card's applets on NXP's newer J3R452 and measured it against the J3R180 we ship on: memory, speed, two applets on one card, and what it would take to accept it.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f6f3ec">
+<link rel="canonical" href="https://ecashcard.org/blog/j3r180-j3r452">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/Figtree-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=7">
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <a class="lock" href="/" aria-label="eCash Card home"><svg class="mark" viewBox="-1 0 66 64" width="41" height="40" aria-hidden="true"><g class="n n1"><g transform="translate(20 22) rotate(-40)"><rect x="-16" y="-10" width="32" height="20" rx="3" fill="#B8E06A" stroke="#13231e" stroke-width="2"/><rect x="-13" y="-7" width="26" height="14" rx="2" fill="none" stroke="#13231e" stroke-width="1.5"/><circle r="4" fill="none" stroke="#13231e" stroke-width="1.6"/><circle cx="-9" r="1.3" fill="#13231e"/><circle cx="9" r="1.3" fill="#13231e"/></g></g><g class="n n2"><g transform="translate(29 19) rotate(-25)"><rect x="-16" y="-10" width="32" height="20" rx="3" fill="#B8E06A" stroke="#13231e" stroke-width="2"/><rect x="-13" y="-7" width="26" height="14" rx="2" fill="none" stroke="#13231e" stroke-width="1.5"/><circle r="4" fill="none" stroke="#13231e" stroke-width="1.6"/><circle cx="-9" r="1.3" fill="#13231e"/><circle cx="9" r="1.3" fill="#13231e"/></g></g><g class="n n3"><g transform="translate(39 20) rotate(-10)"><rect x="-16" y="-10" width="32" height="20" rx="3" fill="#B8E06A" stroke="#13231e" stroke-width="2"/><rect x="-13" y="-7" width="26" height="14" rx="2" fill="none" stroke="#13231e" stroke-width="1.5"/><circle r="4" fill="none" stroke="#13231e" stroke-width="1.6"/><circle cx="-9" r="1.3" fill="#13231e"/><circle cx="9" r="1.3" fill="#13231e"/></g></g><g class="c"><rect x="4" y="26.5" width="56" height="35.3" rx="7" fill="#B8E06A" stroke="#13231e" stroke-width="3"/><clipPath id="hchip"><rect x="11" y="39.2" width="13" height="10" rx="2.2"/></clipPath><rect x="11" y="39.2" width="13" height="10" rx="2.2" fill="#B8E06A" stroke="#13231e" stroke-width="1.6"/><path clip-path="url(#hchip)" d="M15.3 39.2V49.2M19.7 39.2V49.2M11 42.7H15.3M11 45.7H15.3M19.7 42.7H24M19.7 45.7H24" stroke="#13231e" stroke-width="1.2" fill="none"/></g></svg><span><b>ecash</b>card</span></a>
+  <nav aria-label="Site"><a href="https://fedimintcard.org">Fedimint Card</a><a href="https://cashucard.org">Cashu Card</a><a href="/blog/">Blog</a></nav>
+</header>
+
+<main class="doc post">
+  <p class="kicker"><a href="/blog/">Blog</a></p>
+  <h1>Two chips, one applet: the J3R180 and the J3R452</h1>
+  <p class="meta">eCash Card · 9 November 2026</p>
+
+  <p>Every eCash Card we have built so far runs on an NXP J3R180, a Java Card chip from the JCOP 4 family. This week we put both of our applets on its newer sibling, the J3R452 (JCOP 4.5, on NXP's P71D600 die), and measured it against the J3R180 on the same reader with the same files. Short version: both applets run on it unchanged, it is a little slower, it has about 45 KB more room, and the one thing standing between it and our apps is the secure channel it speaks to the card manager.</p>
+
+  <h2>The two chips</h2>
+  <table>
+    <tr><th></th><th>J3R180</th><th>J3R452</th></tr>
+    <tr><td>Operating system</td><td>JCOP 4</td><td>JCOP 4.5</td></tr>
+    <tr><td>Java Card</td><td>3.0.5</td><td>3.0.5</td></tr>
+    <tr><td>Card manager channel</td><td>SCP02, 3DES (on the cards we have)</td><td>SCP03, AES-128</td></tr>
+    <tr><td>Free memory, as we received it</td><td>163,744 B blank</td><td>208,792 B with the seller's four applets still on</td></tr>
+  </table>
+  <p>Java Card 3.0.5 on both is why the applets did not change. Fedimint Card 3.0 and Cashu Card 2.2 are built against the 3.0.5 kit, and the same load files installed on each chip.</p>
+
+  <h2>What we measured</h2>
+  <p>All times are command round trips through an ACS ACR122U, contactless, on Fedimint Card 3.0 unless marked. The card signs with software arithmetic for the BIP-340 signature a Fedimint note needs, so that is the number a holder feels.</p>
+  <table>
+    <tr><th>Operation</th><th>J3R180</th><th>J3R452</th></tr>
+    <tr><td>Install the load file and both instances</td><td>9.3 to 9.7 s</td><td>13.0 s</td></tr>
+    <tr><td>Make a slot's key (GEN_KEY)</td><td>318 ms median</td><td>345 to 350 ms</td></tr>
+    <tr><td>Sign a note (BIP-340)</td><td>943 to 956 ms</td><td>1.02 to 1.03 s</td></tr>
+    <tr><td>Repeat a signature from storage</td><td>54 ms</td><td>55 ms</td></tr>
+    <tr><td>One point multiplication (the native part)</td><td>87 to 91 ms</td><td>82 to 87 ms</td></tr>
+    <tr><td>Native ECDSA sign, P-256</td><td>112 ms</td><td>104 ms</td></tr>
+  </table>
+  <p>The native coprocessor is the same speed or a shade faster on the J3R452. Everything the Java Card interpreter does, which is most of a Schnorr signature and all of a load, is 7 to 40 percent slower. Neither difference changes a tap: a payment is one signature per note on Fedimint Card and one signature per payment on Cashu Card, whatever the chip.</p>
+
+  <h2>Two applets on one card</h2>
+  <p>The question behind the test was whether one card could carry both Fedimint notes and Cashu proofs. It turns out the J3R180 already can. We installed Fedimint Card 3.0 and Cashu Card 2.2 together on a blank J3R180, in both orders, set both up, keyed all 32 Fedimint slots, and signed with each in turn.</p>
+  <table>
+    <tr><th>Stage on the J3R180</th><th>Free memory</th></tr>
+    <tr><td>Blank</td><td>163,744 B</td></tr>
+    <tr><td>Both applets installed</td><td>87,996 B</td></tr>
+    <tr><td>Both set up, all 32 Fedimint slots keyed</td><td>47,436 B</td></tr>
+  </table>
+  <p>Cashu Card's self-test passed 12 of 12 beside the keyed Fedimint applet, every signature from both verified, and lifting the card and putting it back kept both applets' state. Cashu Card's install took 8 bytes of working memory, so RAM is not the constraint either. Each applet keeps its own PIN and its own tills, so a holder with both would carry what amounts to two cards on one chip. The J3R452 has run Fedimint Card alone so far; with 45 KB more room, the pair fits there with margin, and we will run the same test on it.</p>
+
+  <h2>What the bigger chip is for</h2>
+  <p>The answer is room, and a modern channel. Cashu Card holds 128 pieces on either chip, because that limit is the protocol's, so the extra memory does nothing for it. Fedimint Card holds 32 notes, each its own key at about 750 bytes, and the J3R452 would carry 64 with space to spare. SCP03 replaces a 3DES-based channel that GlobalPlatform has been retiring for years. And the J3R452 is NXP's newer line, so it widens where cards can be bought. What it does not bring is speed: every operation we timed was the same or slower.</p>
+
+  <h2>What has to change</h2>
+  <p>Our card tooling, the module both Setup apps use to install and reset cards over NFC, speaks SCP02 only. Accepting the J3R452 means teaching it SCP03: AES-CMAC and AES-CBC, the GlobalPlatform key derivation, and the AES form of the key-change command. The card says which channel it wants in its first reply, so one build of each app can serve both chips, and the till, point of sale and registry need nothing.</p>
+  <p>One more thing depends on who sells the card. The J3R452 we tested came with its own secret key set, where blank J3R180s carry the published default. A first contact that moves such a card to the default, which one key-change command does, puts it in the state our tools already expect, and from then on both models behave the same.</p>
+  <p>The measurements are in the Fedimint Card repository, and the chip's wire traces will go into the test suite for the SCP03 work.</p>
+
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li>Fedimint Card measurements: <a href="https://github.com/fedimintcard/fedimintcard/blob/main/docs/CAP-BUILD.md">docs/CAP-BUILD.md</a></li>
+    <li>Cashu Card hardware reports, including an earlier J3R452 run: <a href="https://github.com/cashucard/cashucard/tree/main/docs">cashucard/docs</a></li>
+    <li>NXP JCOP 4 family: <a href="https://www.nxp.com/docs/en/brochure/JCOP4SECIDAPPA4.pdf">brochure</a></li>
+    <li>J3R452 product data: <a href="https://www.motechno.com/product/j3r452/">MoTechno</a></li>
+  </ul>
+</main>
+
+
+<footer>
+  <p>eCash Card LLC · <a href="mailto:hi@ecashcard.org">hi@ecashcard.org</a></p>
+  <nav aria-label="Site"><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="https://github.com/fedimintcard">GitHub: fedimintcard</a><a href="https://github.com/cashucard">GitHub: cashucard</a></nav>
+</footer>
+
+</div>
+</body>
+</html>
