@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How close can eCash get to cash at the counter? | eCash Card</title>
+<meta name="description" content="What it would take for a merchant to accept eCash with no device, what earlier stored-value cards teach, and why eCash Card works on the open protocol.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f6f3ec">
+<link rel="canonical" href="https://ecashcard.org/blog/merchant-acceptance">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/Figtree-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=6">
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <a class="lock" href="/" aria-label="eCash Card home"><svg class="mark" viewBox="-1 0 66 64" width="41" height="40" aria-hidden="true"><g class="n n1"><g transform="translate(20 22) rotate(-40)"><rect x="-16" y="-10" width="32" height="20" rx="3" fill="#B8E06A" stroke="#13231e" stroke-width="2"/><rect x="-13" y="-7" width="26" height="14" rx="2" fill="none" stroke="#13231e" stroke-width="1.5"/><circle r="4" fill="none" stroke="#13231e" stroke-width="1.6"/><circle cx="-9" r="1.3" fill="#13231e"/><circle cx="9" r="1.3" fill="#13231e"/></g></g><g class="n n2"><g transform="translate(29 19) rotate(-25)"><rect x="-16" y="-10" width="32" height="20" rx="3" fill="#B8E06A" stroke="#13231e" stroke-width="2"/><rect x="-13" y="-7" width="26" height="14" rx="2" fill="none" stroke="#13231e" stroke-width="1.5"/><circle r="4" fill="none" stroke="#13231e" stroke-width="1.6"/><circle cx="-9" r="1.3" fill="#13231e"/><circle cx="9" r="1.3" fill="#13231e"/></g></g><g class="n n3"><g transform="translate(39 20) rotate(-10)"><rect x="-16" y="-10" width="32" height="20" rx="3" fill="#B8E06A" stroke="#13231e" stroke-width="2"/><rect x="-13" y="-7" width="26" height="14" rx="2" fill="none" stroke="#13231e" stroke-width="1.5"/><circle r="4" fill="none" stroke="#13231e" stroke-width="1.6"/><circle cx="-9" r="1.3" fill="#13231e"/><circle cx="9" r="1.3" fill="#13231e"/></g></g><g class="c"><rect x="4" y="26.5" width="56" height="35.3" rx="7" fill="#B8E06A" stroke="#13231e" stroke-width="3"/><clipPath id="hchip"><rect x="11" y="39.2" width="13" height="10" rx="2.2"/></clipPath><rect x="11" y="39.2" width="13" height="10" rx="2.2" fill="#B8E06A" stroke="#13231e" stroke-width="1.6"/><path clip-path="url(#hchip)" d="M15.3 39.2V49.2M19.7 39.2V49.2M11 42.7H15.3M11 45.7H15.3M19.7 42.7H24M19.7 45.7H24" stroke="#13231e" stroke-width="1.2" fill="none"/></g></svg><span><b>ecash</b>card</span></a>
+  <nav aria-label="Projects"><a href="https://fedimintcard.org">Fedimint Card</a><a href="https://cashucard.org">Cashu Card</a></nav>
+</header>
+
+<main class="doc post">
+  <p class="kicker"><a href="/blog/">Blog</a></p>
+  <h1>How close can eCash get to cash at the counter?</h1>
+  <p class="meta">eCash Card · 9 November 2026</p>
+
+  <p>A shop that takes banknotes needs no equipment. The merchant takes the note, looks at it, and puts it in the drawer. With an eCash card, the holder carries a chip, and the merchant today runs a till app on a phone. We spent a few weeks asking how far that second device could shrink, and what we learned changed how we describe our own work.</p>
+
+  <h2>What cash does at the counter</h2>
+  <p>A banknote gives the merchant three things at once. They can check it by eye. Payment is final the moment it changes hands, because the note cannot also stay in the payer's pocket. And there is nothing to settle afterwards.</p>
+  <p>eCash is data, and data can be copied. Something has to guarantee that each note is spent once: the mint or federation when the till is online, a secure chip when it is offline, or a physical seal that a person can inspect. Every design we looked at moves that job to a different place.</p>
+
+  <h2>Where the job can go</h2>
+  <ul>
+    <li><b>A code on the counter and a printed sheet.</b> The customer pays a static code with their own wallet. After the payment is verified, the service returns a one-time word from a sheet only the merchant holds, such as "Row 17: amber falcon". A guess matches about once in four million tries. The merchant needs paper; the customer needs a device.</li>
+    <li><b>The card as a banknote.</b> A fixed-value card, its spend PIN under a scratch-off panel and its settings locked, handed over whole. The merchant checks the face and the seal by eye and redeems the card later on any phone. Opendime, Casascius coins and Tangem's bitcoin notes tried versions of this. It works best when the chip can prove it is genuine, which Fedimint Card's attested keys already allow.</li>
+    <li><b>A passive card on the counter.</b> The customer's phone powers both cards and moves the payment onto the merchant's card. The merchant owns a card, and a new applet mode would let anyone deposit while only the PIN holder can spend.</li>
+    <li><b>Any phone as the checker.</b> A card that answers a tap with a signed web link, as Coinkite's Satscard does, so a merchant can check value without installing anything.</li>
+    <li><b>A smaller box.</b> A $20 to $40 board with an NFC reader and an e-ink screen can run the same offline till logic a phone runs today. LNbits' LNPoS shows the shape.</li>
+    <li><b>Further out.</b> NFC-powered counter displays, cards with screens or fingerprint sensors, and card-to-card transfers.</li>
+  </ul>
+
+  <h2>Lessons from earlier stored value</h2>
+  <p>Mondex, tried in Swindon in the 1990s, signed up 14,000 of 100,000 residents while 30% of retailers declined it, and its last market closed in 2008. Germany's Geldkarte ran from 1996 to 2024, and by 2018 fewer than 1% of issued cards were in use. Both struggled with merchant equipment and acceptance. Hong Kong's Octopus card succeeded because transit operators owned it and required it, and nearly every resident carries one.</p>
+  <p>Two more lessons came up repeatedly. Merchants should trust evidence from their own device or paper: fake payment confirmation messages are a known fraud against mobile money merchants in Kenya. And every offline central bank currency design caps losses, because secure chips are eventually broken. Our cards support per-payment and daily limits for that reason.</p>
+
+  <h2>Where eCash Card fits</h2>
+  <p>The research kept arriving at the same place. Electronic money needs something electronic on the receiving side, so a merchant with no device at all is out of reach for any digital money. The receiving side can still be small, cheap, and owned by anyone.</p>
+  <p>That is why eCash Card works on the protocol. An open protocol for eCash on a chip lets anyone build what accepts it: a till, a wristband, an earbud, or something we haven't imagined. Cashu Card's draft protocol, Fedimint Card's applet and every tool around them are MIT licensed, and we would like to see the acceptance devices come from many hands.</p>
+  <p>If you build payment hardware, wallets or point-of-sale systems, the code is at <a href="https://github.com/fedimintcard">github.com/fedimintcard</a> and <a href="https://github.com/cashucard">github.com/cashucard</a>, and we answer at <a href="mailto:hi@ecashcard.org">hi@ecashcard.org</a>.</p>
+
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li>Mondex: <a href="https://en.wikipedia.org/wiki/Mondex">Wikipedia</a>; <a href="https://www.irishtimes.com/news/manhattan-transfer-goes-nowhere-1.1257685">The Irish Times on the Swindon pilot</a></li>
+    <li>Geldkarte: <a href="https://en.wikipedia.org/wiki/Geldkarte">Wikipedia</a></li>
+    <li>Octopus card: <a href="https://en.wikipedia.org/wiki/Octopus_card">Wikipedia</a></li>
+    <li>Fake Lipa na M-Pesa confirmations: <a href="https://businesstoday.co.ke/exposed-lipa-na-m-pesa-trick-being-used-to-con-businesses">Business Today Kenya</a></li>
+    <li>Offline central bank currency: <a href="https://www.bis.org/publ/othp64.htm">BIS Project Polaris handbook</a>; <a href="https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews260818.en.html">ECB on the offline digital euro</a></li>
+    <li>Sealed bearer devices: <a href="https://blog.coinkite.com/announcing-opendime-v2/">Opendime</a>; <a href="https://en.bitcoin.it/wiki/Casascius_coin">Casascius coins</a>; <a href="https://prnewswire.com/news-releases/tangem-launches-bitcoin-banknotes-in-singapore-300641983.html">Tangem notes</a>; <a href="https://docs.ordinals.com/guides/satscards.html">Satscard</a></li>
+    <li>Small terminals: <a href="https://github.com/lnbits/LNPoS">LNPoS</a></li>
+  </ul>
+</main>
+
+
+<footer>
+  <p>eCash Card LLC · <a href="mailto:hi@ecashcard.org">hi@ecashcard.org</a></p>
+  <nav aria-label="Site"><a href="/blog/">Blog</a><a href="/privacy">Privacy</a><a href="https://github.com/fedimintcard">GitHub: fedimintcard</a><a href="https://github.com/cashucard">GitHub: cashucard</a></nav>
+</footer>
+
+</div>
+</body>
+</html>
